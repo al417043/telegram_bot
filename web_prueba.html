@@ -43,8 +43,8 @@
 </head>
 <body>
     <div class="menu" id="menu1">
-        <button onclick="askForNumber()">Precio</button>
-        <button onclick="sendOption('Opción 2')">Opción 2</button>
+        <button onclick="askForArgs('/precio')">Precio</button>
+        <button onclick="showDescuentos()">Descuentos</button>
         <button onclick="sendOption('Opción 3')">Opción 3</button>
         <button onclick="sendOption('Opción 4')">Opción 4</button>
         <button onclick="sendOption('Opción 5')">Opción 5</button>
@@ -54,6 +54,12 @@
         <button onclick="sendOption('Opción 6')">Opción 6</button>
         <button onclick="sendOption('Opción 7')">Opción 7</button>
         <button onclick="sendOption('Opción 8')">Opción 8</button>
+        <button onclick="showMainMenu()">Volver</button>
+    </div>
+    <div class="menu hidden" id="menu_descuento">
+        <button onclick="sendCommand('/masdescuento','5')">Los 5 articulos con mayor descuento</button>
+        <button onclick="sendCommand('/masdescuento','10')">Los 10 articulos con mayor descuento</button>
+        <button onclick="askForArgs('/masdescuento')">Introducir cantidad</button>
         <button onclick="showMainMenu()">Volver</button>
     </div>
 
@@ -66,17 +72,29 @@
             Telegram.WebApp.close();
         }
 
-        function askForNumber() {
-            const number = prompt("Introduce un número de referencia:");
-            if (number !== null && number.trim() !== "") {
-                Telegram.WebApp.sendData(`/precio:${number}`);
-                Telegram.WebApp.close();
+        function sendCommand(command, args) {
+            Telegram.WebApp.sendData(`${command}:${args}`);
+            Telegram.WebApp.close();
+        }
+        
+        function askForArgs(command) {
+            if (command == '/masdescuento'){
+                const args = prompt("Introduce la cantidad de artículos");
+            } else {
+                const args = prompt("Introduce un número de referencia:");
             }
+            Telegram.WebApp.sendData(`${command}:${args}`);
+            Telegram.WebApp.close();
         }
 
         function showMoreOptions() {
             document.getElementById('menu1').classList.add('hidden');
             document.getElementById('menu2').classList.remove('hidden');
+        }
+
+         function showDescuentos() {
+            document.getElementById('menu1').classList.add('hidden');
+            document.getElementById('menu_descuento').classList.remove('hidden');
         }
 
         function showMainMenu() {

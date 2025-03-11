@@ -62,7 +62,7 @@
         Telegram.WebApp.expand();
 
         function sendOption(option) {
-            Telegram.WebApp.sendData(option);
+            Telegram.WebApp.sendData(`-:${option}`);
             Telegram.WebApp.close();
         }
 

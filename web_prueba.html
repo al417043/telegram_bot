@@ -70,7 +70,7 @@
             const number = prompt("Introduce un número de referencia:");
             if (number !== null && number.trim() !== "") {
                 Telegram.WebApp.sendData(`/precio:${number}`);
-                Telegram.WebApp.close();
+                Telegram.WebApp.expand();
             }
         }
 

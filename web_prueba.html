@@ -43,7 +43,7 @@
 </head>
 <body>
     <div class="menu" id="menu1">
-        <button onclick="askForNumber()">Opción 1</button>
+        <button onclick="askForNumber()">Precio</button>
         <button onclick="sendOption('Opción 2')">Opción 2</button>
         <button onclick="sendOption('Opción 3')">Opción 3</button>
         <button onclick="sendOption('Opción 4')">Opción 4</button>
@@ -67,9 +67,9 @@
         }
 
         function askForNumber() {
-            const number = prompt("Introduce un número:");
+            const number = prompt("Introduce un número de referencia:");
             if (number !== null && number.trim() !== "") {
-                Telegram.WebApp.sendData(`Opción 1 - Número: ${number}`);
+                Telegram.WebApp.sendData(`/precio:${number}`);
                 Telegram.WebApp.close();
             }
         }

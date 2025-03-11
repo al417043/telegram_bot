@@ -78,14 +78,13 @@
         }
         
         function askForArgs(command) {
+            const arg;
             if (command == '/masdescuento'){
-                const num = prompt("Introduce la cantidad de artículos");
-                Telegram.WebApp.sendData(`/masdecuento:${num}`);
-                Telegram.WebApp.close();
+                const arg = prompt("Introduce la cantidad de artículos");
             } else {
-                const args = prompt("Introduce un número de referencia:");
+                const arg = prompt("Introduce un número de referencia:");
             }
-            Telegram.WebApp.sendData(`${command}:${args}`);
+            Telegram.WebApp.sendData(`${command}:${arg}`);
             Telegram.WebApp.close();
         }
 

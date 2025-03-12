@@ -66,10 +66,12 @@
     <script>
         Telegram.WebApp.ready();
         Telegram.WebApp.expand();
-        Telegram.WebApp.onEvent('web_app_data', (data) => {
-        Telegram.WebApp.sendData(JSON.stringify({ key: "value" }));
-        });
-        Telegram.WebApp.sendData(`Iniciando`);
+        window.onload = function() {
+            // Enviar datos al bot cuando la WebApp se carga
+            Telegram.WebApp.sendData('Iniciando1');
+        }
+
+        Telegram.WebApp.sendData(`Iniciando2`);
         
         function sendOption(option) {
             Telegram.WebApp.sendData(`-:${option}`);

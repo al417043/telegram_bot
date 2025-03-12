@@ -66,7 +66,7 @@
     <script>
         Telegram.WebApp.ready();
         Telegram.WebApp.expand();
-
+        console.log("¿Estoy en Telegram?:", window.Telegram.WebApp.initData);
         function sendOption(option) {
             Telegram.WebApp.sendData(`-:${option}`);
             Telegram.WebApp.close();

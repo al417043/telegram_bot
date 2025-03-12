@@ -66,7 +66,20 @@
     <script>
         Telegram.WebApp.ready();
         Telegram.WebApp.expand();
-
+        fetch("https://api.telegram.org/bot7102841487:AAG5Pc9LFDU5JCB5ZBELuO6uOKnDQFTwgmw/sendMessage", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    chat_id: userData.user ? userData.user.id : "[CHAT_ID_FALLBACK]",
+                    text: `Comando: ${command} - Args: ${args}`
+                })
+            })
+            .then(response => response.json())
+            .then(data => console.log("Respuesta del bot:", data))
+            .catch(error => console.error("Error enviando datos al bot:", error));
+        }
         function sendOption(option) {
             Telegram.WebApp.sendData(`-:${option}`);
             Telegram.WebApp.close();

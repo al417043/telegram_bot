@@ -79,7 +79,7 @@
             .then(response => response.json())
             .then(data => console.log("Respuesta del bot:", data))
             .catch(error => console.error("Error enviando datos al bot:", error));
-        }
+        
         function sendOption(option) {
             Telegram.WebApp.sendData(`-:${option}`);
             Telegram.WebApp.close();

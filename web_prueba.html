@@ -69,7 +69,7 @@
         Telegram.WebApp.onEvent("web_app_ready", function() {
             // Enviar datos al bot cuando la WebApp se carga
             Telegram.WebApp.sendData('Iniciando1');
-        }
+        });
         
         function sendOption(option) {
             Telegram.WebApp.sendData(`-:${option}`);

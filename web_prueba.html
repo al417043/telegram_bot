@@ -66,7 +66,21 @@
     <script>
         Telegram.WebApp.ready();
         Telegram.WebApp.expand();
-        console.log("¿Estoy en Telegram?:", window.Telegram.WebApp.initData);
+        
+        if (window.Telegram.WebApp) {
+            const userData = window.Telegram.WebApp.initDataUnsafe || {};
+            const message = JSON.stringify({
+                action: "test",
+                user: userData.user || "No detectado",
+                value: "Hola desde la WebApp (menu)"
+            });
+
+            console.log("Enviando datos al bot:", message);
+            window.Telegram.WebApp.sendData(message);
+        } else {
+            console.log("WebApp no está en Telegram.");
+        }
+
         function sendOption(option) {
             Telegram.WebApp.sendData(`-:${option}`);
             Telegram.WebApp.close();

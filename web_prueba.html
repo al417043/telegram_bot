@@ -66,6 +66,9 @@
     <script>
         Telegram.WebApp.ready();
         Telegram.WebApp.expand();
+        Telegram.WebApp.onEvent('web_app_data', (data) => {
+        Telegram.WebApp.sendData(JSON.stringify({ key: "value" }));
+        });
         Telegram.WebApp.sendData(`Iniciando`);
         
         function sendOption(option) {
